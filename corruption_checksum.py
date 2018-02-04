@@ -4,7 +4,8 @@ def convert_data_to_table(file_name):
         lines = file.readlines()
         table_of_data = [line.replace("\n", "").split("\t") for line in lines]
 
-    return table_of_data
+    for row in table_of_data:
+        for i in range(len(row)):
+            row[i] = int(row[i])
 
-table = convert_data_to_table("corruption_checksum.txt")
-print(table)
+    return table_of_data
