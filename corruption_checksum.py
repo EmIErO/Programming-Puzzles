@@ -1,5 +1,11 @@
-def convert_data_to_table(file_name):
+# Program converts txt file with data to a table (list of lists).
+# It calculates the difference between the largest value and the smallest value for each row; 
+# then it calculates the sum of all of these differences.
 
+def convert_data_to_table(file_name):
+"""
+Converts txt file with data to a table (list of lists) of int.
+"""
     with open(file_name, "r") as file:
         lines = file.readlines()
         table_of_data = [line.replace("\n", "").split("\t") for line in lines]
@@ -12,13 +18,16 @@ def convert_data_to_table(file_name):
 
 
 def calculate_range(table):
-
+"""
+Calculates the difference between the largest value and the smallest value for each row.
+"""
     list_of_ranges = [max(row) - min(row) for row in table]
 
     return list_of_ranges
 
 
 def main():
+    
     table = convert_data_to_table("corruption_checksum.txt")
     list_of_ranges = calculate_range(table)
     checksum = sum(list_of_ranges)
