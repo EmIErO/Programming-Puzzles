@@ -1,4 +1,10 @@
+# Program reviews a sequence of digits (a txt file) 
+# and find the sum of all digits that match the next digit in the list. 
+# The list is circular, so the digit after the last digit is the first digit in the list
+
+
 def convert_captcha_to_list(file_name):
+    """Converts string of digits from a txt file into a list of digits (int)."""
 
     with open(file_name, "r") as file:
         captcha = file.readline()
@@ -11,6 +17,8 @@ def convert_captcha_to_list(file_name):
 
 
 def add_matching_digits(list_of_digits):
+    """Calculates the sum of all digits that match the next digit in the list. 
+    The digit after the last digit is checked with the first digit in the list."""
 
     sum_of_matching_digits = 0
 
@@ -20,6 +28,7 @@ def add_matching_digits(list_of_digits):
 
     first_digit_index = 0
     last_digit_index = -1
+    
     if list_of_digits[first_digit_index] == list_of_digits[last_digit_index]:
         sum_of_matching_digits += list_of_digits[first_digit_index]
 
