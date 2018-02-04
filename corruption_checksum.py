@@ -9,3 +9,12 @@ def convert_data_to_table(file_name):
             row[i] = int(row[i])
 
     return table_of_data
+
+
+def calculate_range(table):
+
+    list_of_ranges = [max(row) - min(row) for row in table]
+
+    return list_of_ranges
+
+
