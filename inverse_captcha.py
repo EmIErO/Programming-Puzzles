@@ -35,7 +35,7 @@ def add_matching_digits(list_of_digits):
     return sum_of_matching_digits
 
 
-    def main():
+def main():
 
     list_of_digits = convert_captcha_to_list("my_capcha.txt")
     sum_of_matching_digits = add_matching_digits(list_of_digits)
