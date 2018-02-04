@@ -18,3 +18,13 @@ def calculate_range(table):
     return list_of_ranges
 
 
+def main():
+    table = convert_data_to_table("corruption_checksum.txt")
+    list_of_ranges = calculate_range(table)
+    checksum = sum(list_of_ranges)
+    print(checksum)
+    
+
+if __name__ == '__main__':
+    main()
+
