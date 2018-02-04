@@ -1,3 +1,6 @@
+# Program reviews a sequence of digits (a txt file) 
+# and find the sum of all digits that match the digit halfway around in the list. 
+
 import inverse_captcha
 
 
