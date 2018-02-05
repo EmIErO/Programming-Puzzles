@@ -1,16 +1,14 @@
 def convert_data_to_list(file_name):
 
     with open(file_name, "r") as file:
-        list_of_steps = []
-    
-        for line in file:
-            #print(line)
-            step = file.readline()
-            print(step)
-            step = int(step.replace("\n", ""))
-            list_of_steps.append(step)
+
+        list_of_steps = file.readlines()
+
+        steps = [step.replace("\n", "").split(",") for step in list_of_steps] # creates list inside list
+        steps = steps[0] # unpacks list    
+        steps = [int(number) for number in steps]
         
-    return list_of_steps
+    return steps
 
 
 def count_steps(list_):
@@ -25,14 +23,12 @@ def count_steps(list_):
         old_position = new_position
         
         steps +=1
-        print(steps)
 
     print("Getting out took {} steps.".format(steps)) 
 
 
 def main():
     list_of_steps = convert_data_to_list("maze.txt")
-    print(list_of_steps)
     count_steps(list_of_steps)
 
 
