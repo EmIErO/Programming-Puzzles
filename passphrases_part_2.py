@@ -4,7 +4,7 @@ import passphrases
 def compare_if_anagrams(word1, word2):
     
     if len(word1) == len(word2):
-        
+
         n = len(word1)
         same_letters = 0
         
@@ -20,7 +20,7 @@ def find_anagrams(list_of_words):
     
     for i in range(len(list_of_words) - 1):
         for j in range(i+1, len(list_of_words)):
-            if compare_if_anagrams(list_of_words[i], list_of_words[j])
+            if compare_if_anagrams(list_of_words[i], list_of_words[j]):
                 return True
 
 def count_valid_passphrases(table):
@@ -34,3 +34,11 @@ def count_valid_passphrases(table):
 
     return valid_passphrases
 
+
+def main():
+    table = passphrases.convert_data_to_table("passphrases.txt")
+    valid_passphrases = count_valid_passphrases(table)
+    print(valid_passphrases)
+    
+if __name__ == "__main__":
+    main()
