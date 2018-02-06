@@ -2,22 +2,20 @@ def count_steps(set_of_blocks):
 
     all_redistributions = []
     steps = 0
-    copy_of_set = set_of_blocks[:]
-    all_redistributions.append(copy_of_set)
+    
+    while set_of_blocks not in all_redistributions:
 
-    while set_of_blocks:
-
+        copy_of_set = set_of_blocks[:]
+        all_redistributions.append(copy_of_set)
+        
         set_of_blocks = distribute_blocks(set_of_blocks)
                     
         if set_of_blocks in all_redistributions:
             steps += 1
             print("This configuration appears for the second time:\n")
             print(set_of_blocks)
-            print("\nIt took {} steps.".format(steps))
-            break
-        else:
-            copy_of_set = set_of_blocks[:]
-            all_redistributions.append(copy_of_set)
+            print("\nIt took {} steps.".format(steps))   
+        else: 
             steps += 1
 
 
