@@ -1,8 +1,3 @@
-
-m = [5, 1, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 6]
-set_of_blocks = [1, 1, 14, 13, 12, 11, 10, 9, 8, 7, 7, 5, 5, 3, 3, 0]
-
-
 def count_steps(set_of_blocks):
 
     all_redistributions = []
@@ -16,9 +11,9 @@ def count_steps(set_of_blocks):
                     
         if set_of_blocks in all_redistributions:
             steps += 1
-            print("This configuration appears for the second time:\n\n")
+            print("This configuration appears for the second time:\n")
             print(set_of_blocks)
-            print("It took {} steps.".format(steps))
+            print("\nIt took {} steps.".format(steps))
             break
         else:
             copy_of_set = set_of_blocks[:]
@@ -31,6 +26,7 @@ def distribute_blocks(set_of_blocks):
     lenght_of_set = len(set_of_blocks)
 
     blocks_to_distribiute = max(set_of_blocks)
+    print(blocks_to_distribiute)
     blocks_to_distribiute_index = set_of_blocks.index(blocks_to_distribiute)
 
     set_of_blocks[blocks_to_distribiute_index] = 0
@@ -38,14 +34,14 @@ def distribute_blocks(set_of_blocks):
     first_part_of_blocks, last_part_of_blocks, number_of_cycles = divide_blocks_to_distribiute(lenght_of_set, 
                                                                                                 blocks_to_distribiute_index, 
                                                                                                 blocks_to_distribiute)
-    
+
     if last_part_of_blocks == 0 and number_of_cycles == 0:
         end_of_iteration = blocks_to_distribiute_index + blocks_to_distribiute + 1
 
         for i in range(blocks_to_distribiute_index + 1, end_of_iteration):
             set_of_blocks[i] = set_of_blocks[i] + 1
     
-    elif: last_part_of_blocks != 0 or number_of_cycles != 0:
+    elif last_part_of_blocks != 0 or number_of_cycles != 0:
         
         for i in range(blocks_to_distribiute_index + 1, lenght_of_set):
             set_of_blocks[i] = set_of_blocks[i] + 1
@@ -68,22 +64,22 @@ def divide_blocks_to_distribiute(lenght_of_set, blocks_to_distribiute_index, blo
     if spots_till_end_of_list >= blocks_to_distribiute:
         first_part_of_blocks = blocks_to_distribiute
         last_part_of_blocks = 0
-        number__of_cycles = 0
+        number_of_cycles = 0
 
     else:
         first_part_of_blocks = spots_till_end_of_list
-        remaining_spots = blocks_to_distribiute - first_part_of_blocks
-        last_part_of_blocks = lenght_of_set % remaining_spots
+        remaining_blocks = blocks_to_distribiute - first_part_of_blocks
+        last_part_of_blocks = remaining_blocks % lenght_of_set 
         
-        if remaining_spots > lenght_of_set:
-            number_of_cycles = (remaining_spots - last_part_of_blocks) / lenght_of_set
+        if remaining_blocks >= lenght_of_set:
+            number_of_cycles = (remaining_blocks - last_part_of_blocks) / lenght_of_set
         else: 
             number_of_cycles = 0
 
-    return first_part_of_blocks, last_part_of_blocks, number__of_cycles      
+    return first_part_of_blocks, last_part_of_blocks, number_of_cycles      
 
 
-def get_users_input(input):
+def get_users_input():
 
     print("This is a relocation process.\n" 
             + "There are some memory banks:\n" 
@@ -101,7 +97,7 @@ def get_users_input(input):
     set_of_blocks = []
 
     for i in range(lenght_of_list):
-        amount_of_blocks = input("How many blocks are in bank no. {}? \n".format(i + 1))
+        amount_of_blocks = int(input("How many blocks are in bank no. {}? \n".format(i + 1)))
         set_of_blocks.append(amount_of_blocks)
 
     return set_of_blocks
@@ -110,7 +106,7 @@ def get_users_input(input):
 def main():
 
     set_of_blocks = get_users_input()
-    count_steps()set_of_blocks
+    count_steps(set_of_blocks)
 
 
 if __name__ == '__main__':
