@@ -26,7 +26,6 @@ def distribute_blocks(set_of_blocks):
     lenght_of_set = len(set_of_blocks)
 
     blocks_to_distribiute = max(set_of_blocks)
-    print(blocks_to_distribiute)
     blocks_to_distribiute_index = set_of_blocks.index(blocks_to_distribiute)
 
     set_of_blocks[blocks_to_distribiute_index] = 0
@@ -91,22 +90,23 @@ def get_users_input():
     try:
         lenght_of_list = int(lenght_of_list)
 
+        set_of_blocks = []
+
+        for i in range(lenght_of_list):
+            amount_of_blocks = int(input("How many blocks are in bank no. {}? \n".format(i + 1)))
+            set_of_blocks.append(amount_of_blocks)
+
+        return set_of_blocks
+
     except ValueError:
         print("Sorry, wrong number.")
-
-    set_of_blocks = []
-
-    for i in range(lenght_of_list):
-        amount_of_blocks = int(input("How many blocks are in bank no. {}? \n".format(i + 1)))
-        set_of_blocks.append(amount_of_blocks)
-
-    return set_of_blocks
 
 
 def main():
 
     set_of_blocks = get_users_input()
-    count_steps(set_of_blocks)
+    if set_of_blocks != None:
+        count_steps(set_of_blocks)
 
 
 if __name__ == '__main__':
